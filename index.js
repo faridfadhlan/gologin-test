@@ -1,6 +1,7 @@
-require('dotenv').config()
+require("dotenv").config();
 
 const { default: GoLogin } = require("gologin-commonjs");
+const { default: puppeteer } = require("puppeteer-core");
 
 async function openBrowser(gologin_profile_id) {
   const GL = new GoLogin({
@@ -17,6 +18,13 @@ async function openBrowser(gologin_profile_id) {
     await GL.stop();
     throw new Error("Failed to start GoLogin");
   }
+
+  const browser = await puppeteer.connect({
+    browserWSEndpoint: gl.wsUrl.toString(),
+  });
+
+  const page = await browser.newPage()
+  await page.goto('https://google.com')
 }
 
-openBrowser(process.env.GOLOGIN_PROFILE_ID)
+openBrowser(process.env.GOLOGIN_PROFILE_ID);
