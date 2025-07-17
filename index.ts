@@ -23,6 +23,14 @@ async function openBrowser(gologin_profile_id: string) {
     browserWSEndpoint: gl.wsUrl.toString(),
   });
 
+  browser.on('disconnected', async () => {
+    try {
+      await GL.stop()
+    } catch (e) {
+      console.error(e);
+    }
+  })
+
   const page = await browser.pages();
   await page[0].goto('https://google.com')
 }
