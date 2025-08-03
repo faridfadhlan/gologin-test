@@ -7,7 +7,7 @@ async function openBrowser(gologin_profile_id: string) {
   const GL = new GoLogin({
     token: process.env.GOLOGIN_TOKEN,
     profile_id: gologin_profile_id,
-    checkBrowserUpdate: false,
+    checkBrowserUpdate: true,
     restoreLastSession: false,
     customArgs: ["--disable-notifications"],
   });
