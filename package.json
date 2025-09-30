@@ -10,7 +10,7 @@
   "description": "",
   "dependencies": {
     "dotenv": "^17.0.0",
-    "gologin-commonjs": "^1.2.4",
+    "gologin-commonjs": "^1.2.8",
     "puppeteer-core": "^24.12.1"
   }
 }
