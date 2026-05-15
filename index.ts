@@ -9,8 +9,10 @@ async function openBrowser(gologin_profile_id: string) {
     profile_id: gologin_profile_id,
     autoUpdateBrowser: true,
     restoreLastSession: false,
-    customArgs: ["--disable-notifications"],
+    args: ['--start-maximized', '--disable-notifications'],
   });
+
+  
 
   let gl = null;
   gl = await GL.start();
@@ -22,6 +24,7 @@ async function openBrowser(gologin_profile_id: string) {
   const browser = await puppeteer.connect({
     browserWSEndpoint: gl.wsUrl.toString(),
   });
+
 
   browser.on('disconnected', async () => {
     try {
